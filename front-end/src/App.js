@@ -6,7 +6,7 @@ import moment from 'moment';
 
 const TWENTY_MIN_TEMP_SUBSCRIPTION= gql`
   subscription {
-    last_20_min_temp(
+    last_1_min_temp(
       order_by: {
         five_sec_interval: asc
       }
@@ -49,7 +49,7 @@ class App extends Component {
                   fill: false
                 }]
               };
-              data.last_20_min_temp.forEach((item) => {
+              data.last_1_min_temp.forEach((item) => {
                 const humanReadableTime = moment(item.five_sec_interval).format('LTS');
                 chartJSData.labels.push(humanReadableTime);
                 chartJSData.datasets[0].data.push(item.max_temp);

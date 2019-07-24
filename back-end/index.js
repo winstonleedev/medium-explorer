@@ -18,7 +18,7 @@ setInterval(
                 insert_temperature (
                 objects: [{
                     temperature: $temp
-                    location: 'London'
+                    location: "London"
                 }]
                 ) {
                     returning {
