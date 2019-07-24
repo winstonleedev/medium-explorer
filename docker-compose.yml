@@ -10,7 +10,7 @@ services:
     - db_data:/var/lib/postgresql/data
 
   graphql-engine:
-    image: hasura/graphql-engine:v1.0.0
+    image: hasura/graphql-engine
     ports:
     - "8080:8080"
     depends_on:
@@ -19,10 +19,11 @@ services:
     environment:
       HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:postgrespassword@timescale:5432/postgres
       HASURA_GRAPHQL_ACCESS_KEY: mylongsecretkey
+      HASURA_GRAPHQL_ENABLE_TELEMETRY: "false"
     command:
       - graphql-engine
       - serve
       - --enable-console
-      
+
 volumes:
   db_data:

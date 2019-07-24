@@ -1,0 +1,29 @@
+{
+  "name": "medium-explorer-fake-data",
+  "version": "1.0.0",
+  "description": "Data query backend for medium blockchain explorer",
+  "main": "index.js",
+  "scripts": {
+    "prod": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thanhphu/medium-explorer.git"
+  },
+  "keywords": [
+    "blockchain",
+    "medium",
+    "explorer",
+    "graphql"
+  ],
+  "author": "Thanh Phu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thanhphu/medium-explorer/issues"
+  },
+  "homepage": "https://github.com/thanhphu/medium-explorer#readme",
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  }
+}
