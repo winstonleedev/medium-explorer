@@ -29,12 +29,15 @@ class App extends Component {
       <div
         style={{display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '20px'}}
       >
-        <Subscription subscription={TWENTY_MIN_TEMP_SUBSCRIPTION}>
+        <Subscription
+          subscription={TWENTY_MIN_TEMP_SUBSCRIPTION}
+          fetchPolicy='cache-first'
+        >
           {
             ({data, error, loading}) => {
               if (error) {
                 console.error(error);
-                return "Error";
+                // let cache = data.client.readQuery({ query, variables: props.variables || null });
               }
               if (loading) {
                 return "Loading";

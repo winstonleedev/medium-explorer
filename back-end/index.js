@@ -35,5 +35,5 @@ setInterval(
       }
     ).then((resp) => resp.json().then((respObj) => console.log(JSON.stringify(respObj, null, 2))));
   },
-  2000
+  5000
 );
