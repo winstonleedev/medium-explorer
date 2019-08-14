@@ -2,7 +2,7 @@ version: '2'
 services:
 
   timescale:
-    image: timescale/timescaledb:latest-pg10
+    image: timescale/timescaledb:latest-pg11
     restart: always
     environment:
       POSTGRES_PASSWORD: postgrespassword
