@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
-import { Line } from 'react-chartjs-2';
+import { Container, Row, Col, InputGroup, Button, FormControl } from 'react-bootstrap';
 import { Subscription } from 'react-apollo';
+
 import gql from 'graphql-tag';
 import moment from 'moment';
+
+import LastBlockMeta from './components/LastBlockMeta';
+import LastTransactionsList from './components/LastTransactionsList';
+import SearchField from './components/SearchField';
+import TopMenu from './components/TopMenu';
+
 
 const TWENTY_MIN_TEMP_SUBSCRIPTION= gql`
   subscription {
@@ -26,9 +33,17 @@ const TWENTY_MIN_TEMP_SUBSCRIPTION= gql`
 class App extends Component {
   render() {
     return (
-      <div
-        style={{display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '20px'}}
-      >
+      <Container>
+        <Row>
+          <Col>
+            <TopMenu />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <SearchField />
+          </Col>
+        </Row>
         <Subscription
           subscription={TWENTY_MIN_TEMP_SUBSCRIPTION}
           fetchPolicy='cache-first'
@@ -37,7 +52,7 @@ class App extends Component {
             ({data, error, loading}) => {
               if (error) {
                 console.error(error);
-                // let cache = data.client.readQuery({ query, variables: props.variables || null });
+                return "Error";
               }
               if (loading) {
                 return "Loading";
@@ -59,18 +74,12 @@ class App extends Component {
                 chartJSData.datasets[0].pointBackgroundColor.push('brown');
               })
               return (
-                <Line
-                  data={chartJSData}
-                  options={{
-                    // animation: {duration: 0},
-                    scales: { yAxes: [{ticks: { min: 5, max: 20 }}]}
-                  }}
-                />
+                <div></div>
               );
             }
           }
         </Subscription>
-      </div>
+      </Container>
     );
   }
 }
