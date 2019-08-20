@@ -33,53 +33,53 @@ const TWENTY_MIN_TEMP_SUBSCRIPTION= gql`
 class App extends Component {
   render() {
     return (
-      <Container>
-        <Row>
-          <Col>
-            <TopMenu />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <SearchField />
-          </Col>
-        </Row>
-        <Subscription
-          subscription={TWENTY_MIN_TEMP_SUBSCRIPTION}
-          fetchPolicy='cache-first'
-        >
-          {
-            ({data, error, loading}) => {
-              if (error) {
-                console.error(error);
-                return "Error";
+      <div>
+        <TopMenu />
+        <Container>
+          <br />
+          <SearchField />
+          <Subscription
+            subscription={TWENTY_MIN_TEMP_SUBSCRIPTION}
+            fetchPolicy='cache-first'
+          >
+            {
+              ({data, error, loading}) => {
+                if (error) {
+                  console.error(error);
+                  return "Error";
+                }
+                if (loading) {
+                  return "Loading";
+                }
+                let chartJSData = {
+                  labels: [],
+                  datasets: [{
+                    label: "Max temperature every five seconds",
+                    data: [],
+                    pointBackgroundColor: [],
+                    borderColor: 'brown',
+                    fill: false
+                  }]
+                };
+                data.last_1_min_temp.forEach((item) => {
+                  const humanReadableTime = moment(item.five_sec_interval).format('LTS');
+                  chartJSData.labels.push(humanReadableTime);
+                  chartJSData.datasets[0].data.push(item.max_temp);
+                  chartJSData.datasets[0].pointBackgroundColor.push('brown');
+                })
+                return (
+                  <div>
+                    <br />
+                    <LastBlockMeta />
+                    <br />
+                    <LastTransactionsList />
+                  </div>
+                );
               }
-              if (loading) {
-                return "Loading";
-              }
-              let chartJSData = {
-                labels: [],
-                datasets: [{
-                  label: "Max temperature every five seconds",
-                  data: [],
-                  pointBackgroundColor: [],
-                  borderColor: 'brown',
-                  fill: false
-                }]
-              };
-              data.last_1_min_temp.forEach((item) => {
-                const humanReadableTime = moment(item.five_sec_interval).format('LTS');
-                chartJSData.labels.push(humanReadableTime);
-                chartJSData.datasets[0].data.push(item.max_temp);
-                chartJSData.datasets[0].pointBackgroundColor.push('brown');
-              })
-              return (
-                <div></div>
-              );
             }
-          }
-        </Subscription>
-      </Container>
+          </Subscription>
+        </Container>
+      </div>
     );
   }
 }
