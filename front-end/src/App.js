@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Alert } from 'react-bootstrap';
+import { Container, Alert, Button, Modal } from 'react-bootstrap';
 import { Subscription } from 'react-apollo';
 
 import gql from 'graphql-tag';
@@ -8,7 +8,6 @@ import LastBlockMeta from './components/LastBlockMeta';
 import LastTransactionsList from './components/LastTransactionsList';
 import SearchField from './components/SearchField';
 import TopMenu from './components/TopMenu';
-
 
 const BLOCK_SUBSCRIPTION= gql`
 subscription {
@@ -28,7 +27,50 @@ subscription {
 }
 `
 
+function TransactionModal(props) {
+  return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Modal heading
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <h4>Centered Modal</h4>
+        <p>
+          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
+          consectetur ac, vestibulum at eros.
+        </p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button onClick={props.onHide}>Close</Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
+
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { isMenuOpen: false };
+    this.handleOpen = this.handleOpen.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+  }
+
+  handleOpen() {
+    this.setState({ isMenuOpen: true });
+  }
+
+  handleClose() {
+    this.setState({ isMenuOpen: false });
+  }
+
   render() {
     return (
       <div>
@@ -59,6 +101,12 @@ class App extends Component {
               }
             }
           </Subscription>
+          <TransactionModal
+            show={this.state.isMenuOpen} onHide={this.handleClose}
+          />
+          <Button variant="primary" onClick={this.handleOpen}>
+            Launch vertically centered modal
+          </Button>
         </Container>
       </div>
     );
