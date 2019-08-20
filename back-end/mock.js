@@ -21,7 +21,7 @@ function randomInt(max) {
 exports.randomTransaction = (blockNum) => {
   return {
     arg: '',
-    coin: randomInt(99999999999999),
+    coin: randomInt(9999999),
     from: randomHexString(20),
     to: randomHexString(20),
     readSet: '',
@@ -65,6 +65,6 @@ exports.randomBlock = async () => {
       data: transactions
     },
     timestamp: (new Date()).toISOString(),
-    txcount: 10
+    txcount: transactions.length
   });
 }

@@ -7,7 +7,7 @@ class LastBlockMeta extends Component {
   render() {
     return (
       <CardGroup>
-        <Card>
+        <Card className="text-center">
           <Card.Body>
             <Card.Title><big>{ this.props.block.num }</big></Card.Title>
             <Card.Text>
@@ -18,7 +18,7 @@ class LastBlockMeta extends Component {
             <small className="text-muted">Last updated <Moment date={this.props.time} fromNow /></small>
           </Card.Footer>
         </Card>
-        <Card>
+        <Card className="text-center">
           <Card.Body>
             <Card.Title>{ this.props.block.timestamp }</Card.Title>
             <Card.Text>
@@ -29,7 +29,7 @@ class LastBlockMeta extends Component {
             <small className="text-muted">Last updated <Moment date={this.props.time} fromNow /></small>
           </Card.Footer>
         </Card>
-        <Card>
+        <Card className="text-center">
           <Card.Body>
             <Card.Title>{ this.props.block.txcount }</Card.Title>
             <Card.Text>
