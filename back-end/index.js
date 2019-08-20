@@ -1,39 +1,45 @@
 const fetch = require('node-fetch');
+const mock = require('./mock.js');
 
 // Feed dummy data to DB
 setInterval(
   () => {
-    const randomTemp = (Math.random() * 5) + 10;
-    fetch(
-      `http://localhost:8080/v1/graphql`,
-      {
-        method: 'POST',
-        headers: {
-            'x-hasura-admin-secret': 'mylongsecretkey',
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify({
-          query: `
-            mutation ($temp:numeric) {
-                insert_temperature (
-                objects: [{
-                    temperature: $temp
-                    location: "London"
-                }]
-                ) {
-                    returning {
-                        recorded_at
-                        temperature
-                    }
-                }
-            }
-          `,
-          variables: {
-            "temp": randomTemp
+    mock.randomBlock().then((block) => {
+      let query = `
+      mutation {
+        insert_block (objects: ${block})
+        {
+          returning {
+            num
           }
-        })
+        }
       }
-    ).then((resp) => resp.json().then((respObj) => console.log(JSON.stringify(respObj, null, 2))));
+      `
+      console.log(query);
+      fetch(
+        `http://localhost:8080/v1/graphql`,
+        {
+          method: 'POST',
+          headers: {
+              'x-hasura-admin-secret': 'mylongsecretkey',
+              'content-type': 'application/json'
+          },
+          body: JSON.stringify({
+            query: query
+          })
+        }
+      )
+      .then(
+        (resp) => resp
+          .json()
+          .then(
+            (respObj) => console.log(JSON.stringify(respObj, null, 2))
+          )
+      )
+      .catch(
+        (error) => console.error(error)
+      );
+    });
   },
   5000
 );

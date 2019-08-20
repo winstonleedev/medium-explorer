@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, InputGroup, Button, FormControl } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { Subscription } from 'react-apollo';
 
 import gql from 'graphql-tag';

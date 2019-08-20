@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, InputGroup, Button, FormControl } from 'react-bootstrap';
+import { InputGroup, Button, FormControl } from 'react-bootstrap';
 
 class SearchField extends Component {
     render() {
