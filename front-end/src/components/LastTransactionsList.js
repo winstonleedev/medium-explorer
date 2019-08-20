@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Table } from 'react-bootstrap';
 import TransactionItem from './TransactionItem';
 
-
 class LastTransactionList extends Component {
   render() {
     return (
@@ -20,7 +19,7 @@ class LastTransactionList extends Component {
         <tbody>
         {
           this.props.block.transactions.map((item) =>
-            <TransactionItem item={item} />
+            <TransactionItem key={item.txid} item={item} showTransaction={this.props.showTransaction} />
           )
         }
         </tbody>

@@ -7,8 +7,15 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "Launch back-end",
             "program": "${workspaceFolder}/back-end/index.js"
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch front-end",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceFolder}"
         }
     ]
 }
