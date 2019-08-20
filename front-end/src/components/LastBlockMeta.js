@@ -1,5 +1,6 @@
 import { Card, CardGroup } from 'react-bootstrap';
 import React, { Component } from 'react';
+import Moment from 'react-moment';
 import 'holderjs';
 
 class LastBlockMeta extends Component {
@@ -7,39 +8,36 @@ class LastBlockMeta extends Component {
     return (
       <CardGroup>
         <Card>
-          <Card.Img variant="top" src="holder.js/100px300?auto=yes&theme=sky&text=100" />
           <Card.Body>
-            <Card.Title>LAST BLOCK NUMBER</Card.Title>
+            <Card.Title><big>{ this.props.block.num }</big></Card.Title>
             <Card.Text>
-              Description
+            Block number
             </Card.Text>
           </Card.Body>
           <Card.Footer>
-            <small className="text-muted">Last updated 3 mins ago</small>
+            <small className="text-muted">Last updated <Moment date={this.props.time} fromNow /></small>
           </Card.Footer>
         </Card>
         <Card>
-          <Card.Img variant="top" src="holder.js/100px300?auto=yes&theme=vine&text=101" />
           <Card.Body>
-            <Card.Title>LAST BLOCK TIME</Card.Title>
+            <Card.Title>{ this.props.block.timestamp }</Card.Title>
             <Card.Text>
-              Description{' '}
+            Block time
             </Card.Text>
           </Card.Body>
           <Card.Footer>
-            <small className="text-muted">Last updated 3 mins ago</small>
+            <small className="text-muted">Last updated <Moment date={this.props.time} fromNow /></small>
           </Card.Footer>
         </Card>
         <Card>
-          <Card.Img variant="top" src="holder.js/100px300?auto=yes&theme=social&text=102" />
           <Card.Body>
-            <Card.Title>TRANSACTION COUNT</Card.Title>
+            <Card.Title>{ this.props.block.txcount }</Card.Title>
             <Card.Text>
-              Description
+            Transaction count
             </Card.Text>
           </Card.Body>
           <Card.Footer>
-            <small className="text-muted">Last updated 3 mins ago</small>
+            <small className="text-muted">Last updated <Moment date={this.props.time} fromNow /></small>
           </Card.Footer>
         </Card>
       </CardGroup>
