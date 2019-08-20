@@ -12,6 +12,7 @@ Execute these commands in sequence
 ## Environment
 
 ```
+cd docker-medium-explorer
 docker-compose up -d
 ```
 
@@ -19,6 +20,7 @@ docker-compose up -d
 
 ```
 cd front-end
+yarn
 yarn run start
 ```
 
@@ -28,5 +30,6 @@ Then go to [https://localhost:3000](https://localhost:3000)
 
 ```
 cd back-end
+pnpm i
 node index.js
 ```

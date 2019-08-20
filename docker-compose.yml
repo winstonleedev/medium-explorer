@@ -20,6 +20,8 @@ services:
       HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:postgrespassword@timescale:5432/postgres
       HASURA_GRAPHQL_ACCESS_KEY: mylongsecretkey
       HASURA_GRAPHQL_ENABLE_TELEMETRY: "false"
+    volumes:
+      - ./docker-data/migrations:/hasura-migrations:ro
     command:
       - graphql-engine
       - serve

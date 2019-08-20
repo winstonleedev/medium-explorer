@@ -1,0 +1,34 @@
+- args:
+    allowlist: []
+    functions: []
+    query_collections: []
+    query_templates: []
+    remote_schemas: []
+    tables:
+    - array_relationships:
+      - comment: null
+        name: transactions
+        using:
+          foreign_key_constraint_on:
+            column: blockNum
+            table: transaction
+      delete_permissions: []
+      event_triggers: []
+      insert_permissions: []
+      object_relationships: []
+      select_permissions: []
+      table: block
+      update_permissions: []
+    - array_relationships: []
+      delete_permissions: []
+      event_triggers: []
+      insert_permissions: []
+      object_relationships:
+      - comment: null
+        name: block
+        using:
+          foreign_key_constraint_on: blockNum
+      select_permissions: []
+      table: transaction
+      update_permissions: []
+  type: replace_metadata

@@ -15,7 +15,6 @@ setInterval(
         }
       }
       `
-      console.log(query);
       fetch(
         `http://localhost:8080/v1/graphql`,
         {

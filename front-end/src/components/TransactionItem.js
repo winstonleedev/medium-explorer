@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 class TransactionItem extends Component {
   render() {
-    console.log(this.props.item);
     return (
       <tr>
         <td class="text-monospace">{ this.props.item.txid.substring(0, 10) + '...' }</td>

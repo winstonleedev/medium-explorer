@@ -5,7 +5,6 @@ import TransactionItem from './TransactionItem';
 
 class LastTransactionList extends Component {
   render() {
-    console.log(this.props.block);
     return (
       <Table striped bordered hover>
         <thead>
