@@ -37,7 +37,7 @@ services:
       - HASURA_PORT=8080
     volumes:
       - ./back-end:/home/node/app
-    command: "node index.js"
+    command: bash -c "npm install --silent && node index.js"
 
   front-end:
     image: node:10
