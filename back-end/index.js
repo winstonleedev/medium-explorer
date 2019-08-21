@@ -1,6 +1,8 @@
 const fetch = require('node-fetch');
 const mock = require('./mock.js');
 
+const url = `http://${process.env.HASURA_HOST || 'localhost'}:${process.env.HASURA_PORT || '8080'}/v1/graphql`
+
 // Feed dummy data to DB
 setInterval(
   () => {
@@ -16,7 +18,7 @@ setInterval(
       }
       `
       fetch(
-        `http://localhost:8080/v1/graphql`,
+        url,
         {
           method: 'POST',
           headers: {

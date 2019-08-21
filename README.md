@@ -2,21 +2,28 @@
 Blockchain explorer for Medium platform
 
 # Requirements
+
+## Using docker
+- Docker only!
+
+## Manual install
 - Node v10
-- PosgreSQL v11
 - Yarn
+- PosgreSQL v11
+- Hasura 1.0.0 beta 4 or later
 
 # How to run
-Execute these commands in sequence
-
-## Environment
+## Automatically
 
 ```
 cd docker-medium-explorer
 docker-compose up -d
 ```
 
-## Front-end
+## Manually
+Execute these commands in sequence
+
+### Front-end
 
 ```
 cd front-end
@@ -26,7 +33,7 @@ yarn run start
 
 Then go to [https://localhost:3000](https://localhost:3000)
 
-## Back-end
+### Back-end
 
 ```
 cd back-end
