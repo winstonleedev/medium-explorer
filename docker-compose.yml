@@ -45,7 +45,7 @@ services:
     working_dir: /home/node/app
     volumes:
       - ./front-end:/home/node/app
-    command: bash -c "yarn install --modules-folder ./resources --verbose && yarn --modules-folder ./resources start"
+    command: bash -c "npm install --silent && npm start"
     ports:
       - "3000:3000"
 
