@@ -7,10 +7,7 @@ Blockchain explorer for Medium platform
 - Docker only!
 
 ## Manual install
-- Node v10
-- Yarn
-- PosgreSQL v11
-- Hasura 1.0.0 beta 4 or later
+See **How to Run**
 
 # How to run
 ## Automatically
@@ -21,7 +18,18 @@ docker-compose up -d
 ```
 
 ## Manually
+Install
+- Node v10
+- Yarn
+- PosgreSQL v11
+- Hasura 1.0.0 beta 4 or later
 Execute these commands in sequence
+
+### Database
+```
+docker-compose run timescale -d
+docker-compose run graphql-engine -d
+```
 
 ### Front-end
 
@@ -34,6 +42,7 @@ yarn run start
 Then go to [https://localhost:3000](https://localhost:3000)
 
 ### Back-end
+Currently only push mock data to database
 
 ```
 cd back-end
