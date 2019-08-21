@@ -40,3 +40,11 @@ cd back-end
 pnpm i
 node index.js
 ```
+
+# Troubleshoot
+
+## graphql-engine failed to start
+Adjust amount of memory available to Docker. Should be at least 4GB, ideally 8GB
+
+## mock or front-end failed to start
+Check if docker can access the Internet by going into the containers and run `npm install`
