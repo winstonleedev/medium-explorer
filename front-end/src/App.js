@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Alert, Button } from 'react-bootstrap';
+import { Container, Alert } from 'react-bootstrap';
 import { Subscription } from 'react-apollo';
 
 import gql from 'graphql-tag';
@@ -9,7 +9,6 @@ import LastTransactionsList from './components/LastTransactionsList';
 import SearchField from './components/SearchField';
 import TopMenu from './components/TopMenu';
 import TransactionModal from './components/TransactionModal';
-
 
 const BLOCK_SUBSCRIPTION= gql`
 subscription {
@@ -61,7 +60,7 @@ class App extends Component {
         <TopMenu />
         <Container>
           <br />
-          <SearchField />
+          <SearchField showTransaction={this.showTransaction} />
           <Subscription
             subscription={BLOCK_SUBSCRIPTION}
             fetchPolicy='cache-first'
