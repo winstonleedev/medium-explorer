@@ -1,7 +1,11 @@
 const fetch = require('node-fetch');
 const mock = require('./mock.js');
 
-const url = `http://${process.env.HASURA_HOST || 'localhost'}:${process.env.HASURA_PORT || '8080'}/v1/graphql`
+const HASURA_HOST = process.env.HASURA_HOST || 'localhost';
+const HASURA_PORT = process.env.HASURA_PORT || '8080';
+const HASURA_ACCESS_KEY = process.env.HASURA_ACCESS_KEY || 'mylongsecretkey';
+
+const url = `http://${HASURA_HOST}:${HASURA_PORT}/v1/graphql`
 
 // Feed dummy data to DB
 setInterval(
@@ -22,7 +26,7 @@ setInterval(
         {
           method: 'POST',
           headers: {
-              'x-hasura-admin-secret': 'mylongsecretkey',
+              'x-hasura-admin-secret': HASURA_ACCESS_KEY,
               'content-type': 'application/json'
           },
           body: JSON.stringify({

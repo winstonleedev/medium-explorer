@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
+import { Button } from 'react-bootstrap';
 
 class TransactionItem extends Component {
   render() {
     return (
       <tr>
         <td className="text-monospace">
-          <a onClick={() => this.props.showTransaction(this.props.item.txid)}>
+          <Button href="#" onClick={() => this.props.showTransaction(this.props.item.txid)}>
           { this.props.item.txid.substring(0, 10) + '...' }
-          </a>
+          </Button>
         </td>
         <td>{ this.props.item.type }</td>
         <td>{ this.props.item.version }</td>
