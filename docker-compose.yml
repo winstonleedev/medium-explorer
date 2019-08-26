@@ -1,25 +1,24 @@
-version: '2'
+version: "2"
 services:
-
   timescale:
     image: timescale/timescaledb:latest-pg11
     restart: always
     environment:
-      POSTGRES_PASSWORD: postgrespassword
+      - POSTGRES_PASSWORD: postgrespassword
     volumes:
-     - db_data:/var/lib/postgresql/data
+      - db_data:/var/lib/postgresql/data
 
   graphql-engine:
     image: hasura/graphql-engine
     ports:
-     - "8080:8080"
+      - "8080:8080"
     depends_on:
-     - "timescale"
+      - "timescale"
     restart: always
     environment:
-      HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:postgrespassword@timescale:5432/postgres
-      HASURA_GRAPHQL_ACCESS_KEY: mylongsecretkey
-      HASURA_GRAPHQL_ENABLE_TELEMETRY: "false"
+      - HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:postgrespassword@timescale:5432/postgres
+      - HASURA_GRAPHQL_ACCESS_KEY: mylongsecretkey
+      - HASURA_GRAPHQL_ENABLE_TELEMETRY: "false"
     volumes:
       - ./docker-data/migrations:/hasura-migrations:ro
     command:
@@ -31,6 +30,8 @@ services:
   mock:
     image: node:10
     user: node
+    depends_on:
+      - "graphql-engine"
     working_dir: /home/node/app
     environment:
       - HASURA_HOST=graphql-engine
@@ -43,6 +44,8 @@ services:
   front-end:
     image: node:10
     user: node
+    depends_on:
+      - "graphql-engine"
     working_dir: /home/node/app
     environment:
       - HASURA_HOST=graphql-engine
