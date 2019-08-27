@@ -58,34 +58,36 @@ class App extends Component {
     return (
       <div>
         <TopMenu />
-        <Container>
-          <br />
-          <SearchField showTransaction={this.showTransaction} />
-          <Subscription
-            subscription={BLOCK_SUBSCRIPTION}
-            fetchPolicy='cache-first'
-          >
-            {({data, error, loading}) => {
-              if (error) {
-                return <Alert variant="danger">Error { error }</Alert>;
-              }
-              if (loading) {
-                return <Alert variant="info">Loading</Alert>;
-              }
-              return (
-                <div>
-                  <br />
-                  <LastBlockMeta block={data.block[0]} time={new Date()}/>
-                  <br />
-                  <LastTransactionsList block={data.block[0]} showTransaction={this.showTransaction} />
-                </div>
-              );
-            }}
-          </Subscription>
-          <TransactionModal
-            show={this.state.isModalOpen} onHide={this.handleClose} transactionid={this.state.modalTransactionID}
-          />
-        </Container>
+        <Subscription
+          subscription={BLOCK_SUBSCRIPTION}
+          fetchPolicy='cache-first'
+        >
+        {({data, error, loading}) => {
+          if (error) {
+            return <Alert variant="danger">Error { error }</Alert>;
+          }
+          if (loading) {
+            return <Alert variant="info">Loading</Alert>;
+          }
+          return (
+            <div>
+              <Container>
+              <br />
+              <SearchField showTransaction={this.showTransaction} />
+              <br />
+              <LastBlockMeta block={data.block[0]} time={new Date()}/>
+              </Container>
+              <br />
+              <Container>
+              <LastTransactionsList block={data.block[0]} showTransaction={this.showTransaction} />
+              </Container>
+            </div>
+          );
+        }}
+        </Subscription>
+        <TransactionModal
+          show={this.state.isModalOpen} onHide={this.handleClose} transactionid={this.state.modalTransactionID}
+        />
       </div>
     );
   }

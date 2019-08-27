@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { InputGroup, Button, FormControl } from 'react-bootstrap';
+import FontAwesomeIcon from 'react-fontawesome';
 
 class SearchField extends Component {
   constructor(props) {
@@ -23,16 +24,17 @@ class SearchField extends Component {
     return (
       <InputGroup>
         <FormControl
-          placeholder="Transaction ID"
-          aria-label="Transaction ID"
+          placeholder='Transaction ID'
+          aria-label='Transaction ID'
           onChange={this.handleChange}
           value={this.state.transactionid}
+          className='form-rounded'
         />
-        <InputGroup.Append>
+        <InputGroup.Prepend>
           <Button onClick={this.handleSubmit}>
-            Search
-            </Button>
-        </InputGroup.Append>
+            <FontAwesomeIcon icon="search" />
+          </Button>
+        </InputGroup.Prepend>
       </InputGroup>
     );
   }

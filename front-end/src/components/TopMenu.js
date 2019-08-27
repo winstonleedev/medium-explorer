@@ -5,7 +5,13 @@ class TopMenu extends Component {
     render() {
         return (
             <Navbar bg="light" expand="lg">
-                <Navbar.Brand href="#home">MEDIUM Blockchain Explorer</Navbar.Brand>
+                <Navbar.Brand href="#home">
+                    <img
+                        alt="MEDIUM Blockchain Explorer"
+                        src="/logo.svg"
+                        className="d-inline-block align-top"
+                    />
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
