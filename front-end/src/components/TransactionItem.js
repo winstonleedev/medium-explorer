@@ -6,7 +6,10 @@ class TransactionItem extends Component {
     return (
       <tr>
         <td className="text-monospace">
-          <Button href="#" onClick={() => this.props.showTransaction(this.props.item.txid)}>
+          <Button
+            variant="link"
+            onClick={() => this.props.showTransaction(this.props.item.txid)}
+            className="transaction-no">
           { this.props.item.txid.substring(0, 10) + '...' }
           </Button>
         </td>

@@ -1,13 +1,78 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: Roboto, sans-serif;
 }
 
 .navbar-default {
-  background: none;
+  color: #fff;
 }
 
 .form-rounded {
   border-radius: 2rem;
+  background: none;
+  color: #fff;
+}
+
+.form-rounded::placeholder {
+  color: #fff;
+}
+
+.full-width {
+  width: 100%;
+  max-width: 100%;
+}
+
+.top-part {
+  background: #2F5597;
+}
+
+.card {
+  background: rgba(31, 70, 138, 0.8);
+}
+
+.card h2,
+.card h6 {
+  color: #00FCD7;
+}
+
+.card small {
+  color: #81A3C8;
+}
+
+table {
+  color: #1A1A1A;
+}
+thead {
+  background: #4ABEB3;
+  color: #fff;
+}
+
+table > tbody > tr:hover {
+  background: rgba(74, 190, 179, 0.11);
+}
+
+.transaction-no {
+  color: #1F468A;
+  font-weight: bold;
+}
+
+.top-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.backdrop {
+  z-index: 1;
+}
+
+.curtain {
+  z-index: 2;
+}
+
+.on-top {
+  z-index: 3;
+  background: #fff;
 }

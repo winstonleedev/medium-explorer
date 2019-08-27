@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { InputGroup, Button, FormControl } from 'react-bootstrap';
-import FontAwesomeIcon from 'react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 class SearchField extends Component {
   constructor(props) {
@@ -23,6 +24,15 @@ class SearchField extends Component {
   render() {
     return (
       <InputGroup>
+        <InputGroup.Prepend>
+          <Button
+            variant="outline-light"
+            onClick={this.handleSubmit}
+            className='form-rounded'
+          >
+            <FontAwesomeIcon icon={faSearch} />
+          </Button>
+        </InputGroup.Prepend>
         <FormControl
           placeholder='Transaction ID'
           aria-label='Transaction ID'
@@ -30,11 +40,6 @@ class SearchField extends Component {
           value={this.state.transactionid}
           className='form-rounded'
         />
-        <InputGroup.Prepend>
-          <Button onClick={this.handleSubmit}>
-            <FontAwesomeIcon icon="search" />
-          </Button>
-        </InputGroup.Prepend>
       </InputGroup>
     );
   }

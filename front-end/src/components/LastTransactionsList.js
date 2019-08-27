@@ -5,7 +5,7 @@ import TransactionItem from './TransactionItem';
 class LastTransactionList extends Component {
   render() {
     return (
-      <Table striped bordered hover>
+      <Table>
         <thead>
           <tr>
             <th>#</th>

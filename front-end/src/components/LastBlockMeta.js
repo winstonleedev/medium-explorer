@@ -1,4 +1,4 @@
-import { Card, CardGroup } from 'react-bootstrap';
+import { Card, CardDeck } from 'react-bootstrap';
 import React, { Component } from 'react';
 import Moment from 'react-moment';
 import 'holderjs';
@@ -6,41 +6,35 @@ import 'holderjs';
 class LastBlockMeta extends Component {
   render() {
     return (
-      <CardGroup>
-        <Card className="text-center">
+      <CardDeck>
+        <Card className="text-center" text="white">
           <Card.Body>
-            <Card.Title><big>{ this.props.block.num }</big></Card.Title>
             <Card.Text>
-            Block number
+            <p>Block number</p>
+            <h2>{ this.props.block.num }</h2>
+            <small>Last updated <Moment date={this.props.time} fromNow /></small>
             </Card.Text>
           </Card.Body>
-          <Card.Footer>
-            <small className="text-muted">Last updated <Moment date={this.props.time} fromNow /></small>
-          </Card.Footer>
         </Card>
-        <Card className="text-center">
+        <Card className="text-center" text="white">
           <Card.Body>
-            <Card.Title>{ this.props.block.timestamp }</Card.Title>
             <Card.Text>
-            Block time
+            <p>Block time</p>
+            <h6>{ this.props.block.timestamp }</h6>
+            <small>Last updated <Moment date={this.props.time} fromNow /></small>
             </Card.Text>
           </Card.Body>
-          <Card.Footer>
-            <small className="text-muted">Last updated <Moment date={this.props.time} fromNow /></small>
-          </Card.Footer>
         </Card>
-        <Card className="text-center">
+        <Card className="text-center" text="white">
           <Card.Body>
-            <Card.Title>{ this.props.block.txcount }</Card.Title>
             <Card.Text>
-            Transaction count
+            <p>Transaction count</p>
+            <h2>{ this.props.block.txcount }</h2>
+            <small>Last updated <Moment date={this.props.time} fromNow /></small>
             </Card.Text>
           </Card.Body>
-          <Card.Footer>
-            <small className="text-muted">Last updated <Moment date={this.props.time} fromNow /></small>
-          </Card.Footer>
         </Card>
-      </CardGroup>
+      </CardDeck>
     );
   }
 }
