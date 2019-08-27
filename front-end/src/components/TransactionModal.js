@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Modal, Alert } from 'react-bootstrap';
+import { Button, Modal, Alert, Table } from 'react-bootstrap';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
@@ -33,55 +33,63 @@ class TransactionModal extends Component {
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Transaction detail
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Transaction detail
         </Modal.Title>
-      </Modal.Header>
+        </Modal.Header>
 
-      <Query query={GET_TRANSACTION} variables={{ txid: this.props.transactionid }}>
-        {({ data, loading }) => {
-          if (loading) {
-            return <Alert variant="info">Loading</Alert>;
-          }
-          console.log(data.transaction);
-          if (data.transaction.length !== 1) {
-            return <Alert variant="danger">Unable to find transaction</Alert>;
-          }
-          let transaction = data.transaction[0];
+        <Query query={GET_TRANSACTION} variables={{ txid: this.props.transactionid }}>
+          {({ data, loading }) => {
+            if (loading) {
+              return <Alert variant="info">Loading</Alert>;
+            }
+            console.log(data.transaction);
+            if (data.transaction.length !== 1) {
+              return <Alert variant="danger">Unable to find transaction</Alert>;
+            }
+            let transaction = data.transaction[0];
 
-          return (
-            <Modal.Body>
-              <p className="text-truncate">
-                TransactionID: {transaction.txid}
-              </p>
-              <p className="text-truncate">
-                Coin: {transaction.coin}
-              </p>
-              <p className="text-truncate">
-                From: {transaction.from}
-              </p>
-              <p className="text-truncate">
-                To: {transaction.to}
-              </p>
-              <p className="text-truncate">
-                Type: {transaction.type}
-              </p>
-              <p className="text-truncate">
-                Version: {transaction.version}
-              </p>
-              <small>
-                Information about transactions are for reference purpose only. For the most accurate information, consult the ledger
+            return (
+              <Modal.Body>
+                <Table className="transaction-info" responsive>
+                  <tr>
+                    <th>TransactionID:</th>
+                    <td className="text-truncate">{transaction.txid}</td>
+                  </tr>
+                  <tr>
+                    <th>Coin:</th>
+                    <td className="text-truncate">{transaction.coin}</td>
+                  </tr>
+                  <tr>
+                    <th>From:</th>
+                    <td className="text-truncate">{transaction.from}</td>
+                  </tr>
+                  <tr>
+                    <th>To:</th>
+                    <td className="text-truncate">{transaction.to}</td>
+                  </tr>
+                  <tr>
+                    <th>Type:</th>
+                    <td className="text-truncate">{transaction.type}</td>
+                  </tr>
+                  <tr>
+                    <th>Version:</th>
+                    <td className="text-truncate">{transaction.version}</td>
+                  </tr>
+                </Table>
+                <small>
+                  Information about transactions are for reference purpose only. For the most accurate information, consult the ledger
               </small>
-            </Modal.Body>
-          );
-        }}
-      </Query>
+              </Modal.Body>
+            );
+          }}
+        </Query>
 
-      <Modal.Footer>
-        <Button onClick={this.props.onHide}>Close</Button>
-      </Modal.Footer>
-    </Modal>
+        <Modal.Footer>
+          <Button onClick={this.props.onHide}>Close</Button>
+        </Modal.Footer>
+      </Modal>
     );
   }
 }

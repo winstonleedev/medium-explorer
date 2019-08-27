@@ -5,7 +5,7 @@ import TransactionItem from './TransactionItem';
 class LastTransactionList extends Component {
   render() {
     return (
-      <Table>
+      <Table className="transaction-list" responsive>
         <thead>
           <tr>
             <th>#</th>

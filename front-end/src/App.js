@@ -72,6 +72,7 @@ class App extends Component {
             return (
               <div>
                 <Container className="top-part full-width">
+                  <Particles canvasClassName="top-left backdrop" height="322px" />
                   <div className="curtain">
                     <TopMenu />
                     <br />
@@ -82,7 +83,6 @@ class App extends Component {
                       <br />
                     </Container>
                   </div>
-                  <Particles canvasClassName="top-left backdrop" height="322px" />
                 </Container>
                 <Container className="on-top">
                   <br />

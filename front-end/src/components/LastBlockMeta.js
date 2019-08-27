@@ -12,7 +12,6 @@ class LastBlockMeta extends Component {
             <Card.Text>
             <p>Block number</p>
             <h2>{ this.props.block.num }</h2>
-            <small>Last updated <Moment date={this.props.time} fromNow /></small>
             </Card.Text>
           </Card.Body>
         </Card>
@@ -30,7 +29,6 @@ class LastBlockMeta extends Component {
             <Card.Text>
             <p>Transaction count</p>
             <h2>{ this.props.block.txcount }</h2>
-            <small>Last updated <Moment date={this.props.time} fromNow /></small>
             </Card.Text>
           </Card.Body>
         </Card>

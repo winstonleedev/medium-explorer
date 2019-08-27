@@ -1,7 +1,7 @@
 # medium-explorer
 Blockchain explorer for Medium platform
 
-[![Preview](https://thumb.gyazo.com/thumb/1180_w/eyJhbGciOiJIUzI1NiJ9.eyJpbWciOiJfMDg2YWU2MWE0ODkyMDlkZTRlMzNkNmM0YTY5ODUwNmMifQ.PI-ym5FA76y6boVaj8m4tmOKL3tTJn-rcevxUkWz5sE-gif.jpg)](https://i.gyazo.com/7a826daeb7a1003b31d85d6be4a3ea68.mp4)
+[![Preview](demo.gif)](demo.gif)
 
 # Requirements
 

@@ -1,6 +1,6 @@
 dependencies:
   node-fetch: 2.6.0
-lockfileVersion: 5.1
+lockfileVersion: 5
 packages:
   /node-fetch/2.6.0:
     dev: false
