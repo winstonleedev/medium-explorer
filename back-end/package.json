@@ -4,8 +4,10 @@
   "description": "Data query backend for medium blockchain explorer",
   "main": "index.js",
   "scripts": {
-    "prod": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "MOCK_MODE=false node index.js",
+    "start-mock": "MOCK_MODE=true node index.js",
+    "start-grpc": "MOCK_MODE=false node index.js",
+    "proto": "cd proto && grpc_tools_node_protoc --js_out=import_style=commonjs,binary:. --grpc_out=. proto/honeybee.proto"
   },
   "repository": {
     "type": "git",
@@ -24,6 +26,9 @@
   },
   "homepage": "https://github.com/thanhphu/medium-explorer#readme",
   "dependencies": {
+    "atob": "^2.1.2",
+    "google-protobuf": "^3.9.1",
+    "grpc": "^1.23.3",
     "node-fetch": "^2.6.0"
   }
 }

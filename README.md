@@ -59,3 +59,12 @@ Adjust amount of memory available to Docker. Should be at least 4GB, ideally 8GB
 
 ## mock or front-end failed to start
 Check if docker can access the Internet by going into the containers and run `npm install`
+
+## Exporting hasura schema
+
+```
+npm install -g apollo
+apollo schema:download --endpoint https://my-graphql-engine.com/v1/graphql --header 'X-Hasura-Admin-Secret: adminsecretkey'
+```
+
+[Read more here](https://docs.hasura.io/1.0/graphql/manual/schema/export-graphql-schema.html)

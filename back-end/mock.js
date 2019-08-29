@@ -11,8 +11,10 @@ function objectToGraphQL(object) {
   return util.inspect(object, {
     depth: 5,
     compact: false
-  }).replace(/\'/g,'"');
+  }).replace(/\'/g, '"');
 }
+
+exports.objectToGraphQL = objectToGraphQL;
 
 function randomInt(max) {
   return parseInt((Math.random() * max))
@@ -32,22 +34,27 @@ exports.randomTransaction = (blockNum) => {
   }
 }
 
-exports.randomBlock = async () => {
-  let blockNum = 0;
-  blockNum = await fp
+async function getBlockNum() {
+  let blockNum = await fp
     .readFile(COUNT_FILE_NAME)
     .catch(err => {
       console.log(COUNT_FILE_NAME + ' not found');
       return 0;
     });
 
-  if(isNaN(blockNum)) {
+  if (isNaN(blockNum)) {
     blockNum = 0;
   } else {
     blockNum = parseInt(blockNum);
   }
 
-  fs.writeFile(COUNT_FILE_NAME, ++blockNum, () => {});
+  fs.writeFile(COUNT_FILE_NAME, ++blockNum, () => { });
+  return blockNum;
+}
+
+exports.randomBlock = async () => {
+  let blockNum = 0;
+  blockNum = await getBlockNum();
 
   const randomOrderer = randomInt(5);
 
@@ -68,3 +75,5 @@ exports.randomBlock = async () => {
     txcount: transactions.length
   });
 }
+
+exports.randomHexString = randomHexString;

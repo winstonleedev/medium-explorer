@@ -1,0 +1,32 @@
+syntax = "proto3";
+package honeybee;
+
+message MetaData {
+    BlockMeta meta_block = 1;
+    repeated TxMeta meta_txs = 2;
+}
+
+message BlockMeta{
+    uint64 blockNum = 1;
+    string creator = 2;
+    uint64 createTime = 3;
+    uint64 txCount = 4;
+}
+
+message TxMeta {
+    uint64 createTime = 1;
+    bytes id = 2;
+    uint64 type = 3;
+    uint64 version = 4;
+    bytes from  = 5;
+    bytes to    = 6;
+    string coin = 7;
+}
+
+message Empty{
+
+}
+
+service MetaDataReceiver {
+    rpc SendMetaData (MetaData) returns (Empty);
+}

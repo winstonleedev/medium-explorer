@@ -8,7 +8,11 @@
             "type": "node",
             "request": "launch",
             "name": "Launch back-end",
-            "program": "${workspaceFolder}/back-end/index.js"
+            "program": "${workspaceFolder}/back-end/index.js",
+            "env": {
+                "MOCK_MODE": "false"
+            },
+            "cwd": "${workspaceFolder}/back-end"
         },
         {
             "type": "chrome",
