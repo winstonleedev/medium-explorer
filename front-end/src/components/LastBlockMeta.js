@@ -9,27 +9,21 @@ class LastBlockMeta extends Component {
       <CardDeck>
         <Card className="text-center" text="white">
           <Card.Body>
-            <Card.Text>
-            <p>Block number</p>
-            <h2>{ this.props.block.num }</h2>
-            </Card.Text>
+            <Card.Text>Block number</Card.Text>
+            <Card.Title>{ this.props.block.num }</Card.Title>
           </Card.Body>
         </Card>
         <Card className="text-center" text="white">
           <Card.Body>
-            <Card.Text>
-            <p>Block time</p>
-            <h6>{ this.props.block.timestamp }</h6>
+            <Card.Text>Block time</Card.Text>
+            <Card.Title className="time-small">{ this.props.block.timestamp }</Card.Title>
             <small>Last updated <Moment date={this.props.time} fromNow /></small>
-            </Card.Text>
           </Card.Body>
         </Card>
         <Card className="text-center" text="white">
           <Card.Body>
-            <Card.Text>
-            <p>Transaction count</p>
-            <h2>{ this.props.block.txcount }</h2>
-            </Card.Text>
+            <Card.Text>Transaction count</Card.Text>
+            <Card.Title>{ this.props.block.txcount }</Card.Title>
           </Card.Body>
         </Card>
       </CardDeck>

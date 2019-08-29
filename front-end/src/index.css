@@ -35,9 +35,13 @@ body {
   background: rgba(31, 70, 138, 0.9);
 }
 
-.card h2,
-.card h6 {
+.card .h5 {
   color: #00FCD7;
+  font-size: 3em;
+}
+
+.card .time-small {
+  font-size: 1em;
 }
 
 .card small {
