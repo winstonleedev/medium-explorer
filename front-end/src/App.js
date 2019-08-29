@@ -64,12 +64,13 @@ class App extends Component {
         >
           {({ data, error, loading }) => {
             if (error) {
-              return <Alert variant="danger">Error {error}</Alert>;
-            }
-            if (loading) {
+              console.error("Subscription error" + error);
+              return <Alert variant="danger">Error</Alert>;
+            } else if (loading) {
               return <Alert variant="info">Loading</Alert>;
-            }
-            return (
+            } else if (!data.block) {
+              return <Alert variant="info">No data</Alert>;
+            } else return (
               <div>
                 <Container className="top-part full-width">
                   <Particles canvasClassName="top-left backdrop" height="322px" />

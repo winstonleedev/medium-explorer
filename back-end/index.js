@@ -80,9 +80,7 @@ function transformTx(tx) {
     coin: foo.coin,
     from: base64ToBase16(foo.from),
     to: base64ToBase16(foo.to),
-    readSet: '',
-    writeSet: '',
-    txid: base64ToBase16(foo.id),
+    txid: mock.randomHexString(16),
     type: foo.type,
     version: foo.version
   }
@@ -120,7 +118,7 @@ function sendMetaData(call, callback) {
   console.log("txs");
   log(transactions);
 
-  // sendData(mock.objectToGraphQL(block));
+  sendData(mock.objectToGraphQL(block));
 
   let reply = new messages.Empty();
   callback(null, reply);

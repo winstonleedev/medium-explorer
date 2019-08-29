@@ -3,18 +3,15 @@ CREATE TABLE public.block (
     "timestamp" timestamp with time zone NOT NULL,
     txcount integer NOT NULL,
     orderer integer NOT NULL,
-    hash bytea NOT NULL
 );
 COMMENT ON TABLE public.block IS 'Block meta table';
 CREATE TABLE public.transaction (
     txid text NOT NULL,
     type integer NOT NULL,
-    "from" bytea NOT NULL,
-    "to" bytea NOT NULL,
+    "from" text NOT NULL,
+    "to" text NOT NULL,
     coin bigint NOT NULL,
     arg text NOT NULL,
-    "readSet" bytea NOT NULL,
-    "writeSet" bytea NOT NULL,
     "blockNum" integer NOT NULL,
     version integer NOT NULL
 );

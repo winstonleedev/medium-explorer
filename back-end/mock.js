@@ -26,8 +26,6 @@ exports.randomTransaction = (blockNum) => {
     coin: randomInt(9999999),
     from: randomHexString(20),
     to: randomHexString(20),
-    readSet: '',
-    writeSet: '',
     txid: randomHexString(32),
     type: 0,
     version: 0
@@ -65,7 +63,6 @@ exports.randomBlock = async () => {
   }
 
   return objectToGraphQL({
-    hash: randomHexString(32),
     num: blockNum,
     orderer: randomOrderer,
     transactions: {

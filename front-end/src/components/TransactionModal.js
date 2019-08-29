@@ -10,23 +10,24 @@ query Transaction($txid: String) {
       num
       orderer
       timestamp
-      hash
     }
     coin
     from
-    readSet
     to
     txid
     type
     version
-    writeSet
   }
 }
 `;
 
 class TransactionModal extends Component {
   render() {
-    return (
+    if (!this.props.transactionid) {
+      return (
+        <Alert variant="info">Loading</Alert>
+      );
+    } else return (
       <Modal
         {...this.props}
         size="lg"
@@ -41,9 +42,10 @@ class TransactionModal extends Component {
 
         <Query query={GET_TRANSACTION} variables={{ txid: this.props.transactionid }}>
           {({ data, loading }) => {
-            if (loading) {
+            if (loading || !data || !data.transaction) {
               return <Alert variant="info">Loading</Alert>;
             }
+
             console.log(data.transaction);
             if (data.transaction.length !== 1) {
               return <Alert variant="danger">Unable to find transaction</Alert>;
