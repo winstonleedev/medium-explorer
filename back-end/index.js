@@ -89,13 +89,16 @@ function transformTx(tx) {
 
 function transformBlock(block) {
   let foo = block.toObject();
+  // convert unix timestamp to Date
+  let date = !isNaN(+foo.createtime) ? new Date(+foo.createtime * 1000) : new Date();
+
   let bar = {
     num: foo.blocknum,
     orderer: +foo.creator,
     transactions: {
       data: []
     },
-    timestamp: foo.createtime || (new Date()).toISOString(),
+    timestamp: date.toISOString(),
     txcount: foo.txcount
   };
   return bar;

@@ -24,8 +24,9 @@ query Transaction($txid: String) {
 class TransactionModal extends Component {
   render() {
     if (!this.props.transactionid) {
+      // Silently display nothing if there's no parameter
       return (
-        <Alert variant="info">Loading</Alert>
+        <div></div>
       );
     } else return (
       <Modal

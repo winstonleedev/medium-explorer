@@ -2,7 +2,7 @@ CREATE TABLE public.block (
     num integer NOT NULL,
     "timestamp" timestamp with time zone NOT NULL,
     txcount integer NOT NULL,
-    orderer integer NOT NULL,
+    orderer integer NOT NULL
 );
 COMMENT ON TABLE public.block IS 'Block meta table';
 CREATE TABLE public.transaction (

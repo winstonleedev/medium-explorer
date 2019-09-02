@@ -26,38 +26,38 @@ services:
       - serve
       - --enable-console
 
-  # back-end:
-  #   image: node:10
-  #   user: node
-  #   depends_on:
-  #     - "graphql-engine"
-  #   working_dir: /home/node/app
-  #   environment:
-  #     HASURA_HOST: graphql-engine
-  #     HASURA_PORT: 8080
-  #     HASURA_ACCESS_KEY: mylongsecretkey
-  #     MOCK_MODE: "false"
-  #   volumes:
-  #     - ./back-end:/home/node/app
-  #   ports:
-  #     - "50051:50051"
-  #   command: bash -c "echo Starting... && npm install --silent && node index.js"
+  back-end:
+    image: node:10
+    user: node
+    depends_on:
+      - "graphql-engine"
+    working_dir: /home/node/app
+    environment:
+      HASURA_HOST: graphql-engine
+      HASURA_PORT: 8080
+      HASURA_ACCESS_KEY: mylongsecretkey
+      MOCK_MODE: "false"
+    volumes:
+      - ./back-end:/home/node/app
+    ports:
+      - "50051:50051"
+    command: bash -c "echo Starting... && npm install --silent && node index.js"
 
-  # front-end:
-  #   image: node:10
-  #   user: node
-  #   depends_on:
-  #     - "graphql-engine"
-  #   working_dir: /home/node/app
-  #   environment:
-  #     HASURA_HOST: graphql-engine
-  #     HASURA_PORT: 8080
-  #     HASURA_ACCESS_KEY: mylongsecretkey
-  #   volumes:
-  #     - ./front-end:/home/node/app
-  #   command: bash -c "echo Starting... && npm install --silent && npm start"
-  #   ports:
-  #     - "3000:3000"
+  front-end:
+    image: node:10
+    user: node
+    depends_on:
+      - "graphql-engine"
+    working_dir: /home/node/app
+    environment:
+      HASURA_HOST: graphql-engine
+      HASURA_PORT: 8080
+      HASURA_ACCESS_KEY: mylongsecretkey
+    volumes:
+      - ./front-end:/home/node/app
+    command: bash -c "echo Starting... && npm install --silent && npm start"
+    ports:
+      - "3000:3000"
 
 volumes:
   db_data:

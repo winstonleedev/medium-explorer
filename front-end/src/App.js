@@ -68,7 +68,7 @@ class App extends Component {
               return <Alert variant="danger">Error</Alert>;
             } else if (loading) {
               return <Alert variant="info">Loading</Alert>;
-            } else if (!data.block) {
+            } else if (!data.block || !data.block[0]) {
               return <Alert variant="info">No data</Alert>;
             } else return (
               <div>
