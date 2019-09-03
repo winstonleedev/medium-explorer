@@ -80,14 +80,14 @@ function transformTx(tx) {
     coin: foo.coin,
     from: base64ToBase16(foo.from),
     to: base64ToBase16(foo.to),
-    txid: mock.randomHexString(16),
+    txid: base64ToBase16(foo.id),
     type: foo.type,
     version: foo.version
   }
   return bar;
 }
 
-function transformBlock(block) {
+function transformBlock(block, transactions) {
   let foo = block.toObject();
   // convert unix timestamp to Date
   let date = !isNaN(+foo.createtime) ? new Date(+foo.createtime * 1000) : new Date();
@@ -99,7 +99,7 @@ function transformBlock(block) {
       data: []
     },
     timestamp: date.toISOString(),
-    txcount: foo.txcount
+    txcount: transactions ? transactions.length : foo.txcount
   };
   return bar;
 }
@@ -111,7 +111,7 @@ function sendMetaData(call, callback) {
   let transactions = rawTxs.map(element =>
     transformTx(element)
   );
-  let block = transformBlock(rawBlock);
+  let block = transformBlock(rawBlock, transactions);
   block.transactions = {
     data: transactions
   };
