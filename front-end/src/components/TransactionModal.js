@@ -56,30 +56,32 @@ class TransactionModal extends Component {
             return (
               <Modal.Body>
                 <Table className="transaction-info" responsive>
-                  <tr>
-                    <th>TransactionID:</th>
-                    <td className="text-truncate">{transaction.txid}</td>
-                  </tr>
-                  <tr>
-                    <th>Coin:</th>
-                    <td className="text-truncate">{transaction.coin}</td>
-                  </tr>
-                  <tr>
-                    <th>From:</th>
-                    <td className="text-truncate">{transaction.from}</td>
-                  </tr>
-                  <tr>
-                    <th>To:</th>
-                    <td className="text-truncate">{transaction.to}</td>
-                  </tr>
-                  <tr>
-                    <th>Type:</th>
-                    <td className="text-truncate">{transaction.type}</td>
-                  </tr>
-                  <tr>
-                    <th>Version:</th>
-                    <td className="text-truncate">{transaction.version}</td>
-                  </tr>
+                  <tbody>
+                    <tr>
+                      <th>TransactionID:</th>
+                      <td className="text-truncate">{transaction.txid}</td>
+                    </tr>
+                    <tr>
+                      <th>Coin:</th>
+                      <td className="text-truncate">{transaction.coin}</td>
+                    </tr>
+                    <tr>
+                      <th>From:</th>
+                      <td className="text-truncate">{transaction.from}</td>
+                    </tr>
+                    <tr>
+                      <th>To:</th>
+                      <td className="text-truncate">{transaction.to}</td>
+                    </tr>
+                    <tr>
+                      <th>Type:</th>
+                      <td className="text-truncate">{transaction.type}</td>
+                    </tr>
+                    <tr>
+                      <th>Version:</th>
+                      <td className="text-truncate">{transaction.version}</td>
+                    </tr>
+                  </tbody>
                 </Table>
                 <small>
                   Information about transactions are for reference purpose only. For the most accurate information, consult the ledger

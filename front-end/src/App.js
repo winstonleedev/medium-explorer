@@ -69,7 +69,22 @@ class App extends Component {
             } else if (loading) {
               return <Alert variant="info">Loading</Alert>;
             } else if (!data.block || !data.block[0]) {
-              return <Alert variant="info">No data</Alert>;
+              return (
+                <Container className="top-part full-width">
+                  <Particles canvasClassName="top-left backdrop" height="322px" />
+                  <div className="curtain">
+                    <TopMenu />
+                    <br />
+                    <Container>
+                      <SearchField showTransaction={this.showTransaction} />
+                      <br />
+                      <Alert variant="info">No data</Alert>
+                      <br />
+                    </Container>
+                  </div>
+                </Container>
+              );
+              ;
             } else return (
               <div>
                 <Container className="top-part full-width">
