@@ -55,7 +55,7 @@ services:
       HASURA_ACCESS_KEY: mylongsecretkey
     volumes:
       - ./front-end:/home/node/app
-    command: bash -c "chmod +x entrypoint.sh && entrypoint.sh"
+    command: bash -c "chmod +x entrypoint.sh && ./entrypoint.sh"
     ports:
       - "3030:3000"
 
