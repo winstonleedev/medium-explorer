@@ -24,9 +24,9 @@ exports.randomTransaction = (blockNum) => {
   return {
     arg: '',
     coin: randomInt(9999999),
-    from: randomHexString(20),
-    to: randomHexString(20),
-    txid: randomHexString(32),
+    from: randomHexString(40),
+    to: randomHexString(40),
+    txid: randomHexString(64),
     type: 0,
     version: 0
   }
