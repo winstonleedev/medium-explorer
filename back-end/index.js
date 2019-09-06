@@ -10,7 +10,7 @@ const services = require('./proto/honeybee_grpc_pb');
 const HASURA_HOST = process.env.HASURA_HOST || 'localhost';
 const HASURA_PORT = process.env.HASURA_PORT || '8080';
 const HASURA_ACCESS_KEY = process.env.HASURA_ACCESS_KEY || 'mylongsecretkey';
-const MOCK_MODE = process.env.MOCK_MODE || 'true';
+const MOCK_MODE = (process.env.MOCK_MODE || 'true').trim();
 const GRPC_HOST = process.env.GRPC_HOST || '0.0.0.0';
 const GRPC_PORT = process.env.GRPC_PORT || '50051';
 
@@ -134,7 +134,8 @@ function startGrpcServer() {
   server.start();
 }
 
-if (MOCK_MODE === 'true') {
+console.log('MOCK_MODE: ', MOCK_MODE);
+if (MOCK_MODE == 'true') {
   startMock();
 } else {
   startGrpcServer();
