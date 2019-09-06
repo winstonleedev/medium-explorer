@@ -9,9 +9,9 @@ import { ApolloClient } from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
-const HASURA_HOST = process.env.HASURA_HOST || 'localhost';
-const HASURA_PORT = process.env.HASURA_PORT || '8080';
-const HASURA_ACCESS_KEY = process.env.HASURA_ACCESS_KEY || 'mylongsecretkey';
+const HASURA_HOST = process.env.REACT_APP_HASURA_HOST || 'localhost';
+const HASURA_PORT = process.env.REACT_APP_HASURA_PORT || '8080';
+const HASURA_ACCESS_KEY = process.env.REACT_APP_HASURA_ACCESS_KEY || 'mylongsecretkey';
 
 // Create a WebSocket link:
 const link = new WebSocketLink({

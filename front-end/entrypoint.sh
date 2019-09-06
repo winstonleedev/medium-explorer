@@ -4,9 +4,9 @@ echo Setting environment...
 
 destFile=.env
 echo > "$destFile"
-echo "HASURA_HOST=$HASURA_HOST" >> "$destFile"
-echo "HASURA_PORT=$HASURA_PORT" >> "$destFile"
-echo "HASURA_ACCESS_KEY=$HASURA_ACCESS_KEY" >> "$destFile"
+echo "REACT_APP_HASURA_HOST=$HASURA_HOST" >> "$destFile"
+echo "REACT_APP_HASURA_PORT=$HASURA_PORT" >> "$destFile"
+echo "REACT_APP_HASURA_ACCESS_KEY=$HASURA_ACCESS_KEY" >> "$destFile"
 
 echo Installing packages...
 npm install --silent
