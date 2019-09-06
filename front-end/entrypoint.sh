@@ -1,11 +1,13 @@
 echo Starting...
 
 echo Setting environment...
-environment="HASURA_HOST HASURA_PORT HASURA_ACCESS_KEY"
-destFile=.env
 
+destFile=.env
+echo > "$destFile"
 for var in ${environment}; do
-  echo "$var" > "$destFile"
+  echo HASURA_HOST=$HASURA_HOST >> "$destFile"
+  echo HASURA_PORT=$HASURA_PORT >> "$destFile"
+  echo HASURA_ACCESS_KEY=$HASURA_ACCESS_KEY >> "$destFile"
 done
 
 echo Installing packages...
