@@ -28,7 +28,7 @@
   "dependencies": {
     "atob": "^2.1.2",
     "google-protobuf": "^3.9.1",
-    "grpc": "^1.23.3",
+    "grpc": "^1.24.9",
     "node-fetch": "^2.6.1"
   }
 }
