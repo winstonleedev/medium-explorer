@@ -1,7 +1,7 @@
 # medium-explorer
 Blockchain explorer for Medium platform
 
-[![Preview](demo.gif)](demo.gif)
+[![Preview](docs/demo.gif)](docs/demo.gif)
 
 # Requirements
 
@@ -18,6 +18,10 @@ See **How to Run**
 cd docker-medium-explorer
 docker-compose up -d
 ```
+
+(It takes about 3 minutes to start on a 2019 MBP i9 16GB RAM)
+
+Access the front-end at [https://localhost:3030](https://localhost:3030)
 
 ## Manually
 Install
@@ -68,3 +72,9 @@ apollo schema:download --endpoint https://my-graphql-engine.com/v1/graphql --hea
 ```
 
 [Read more here](https://docs.hasura.io/1.0/graphql/manual/schema/export-graphql-schema.html)
+
+## Screenshots
+
+![](docs/screen1.png)
+
+![](docs/screen2.png)

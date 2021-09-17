@@ -1,4 +1,5 @@
-version: "2"
+version: "3.7"
+
 services:
   timescale:
     image: timescale/timescaledb:latest-pg11
@@ -8,7 +9,7 @@ services:
     environment:
       POSTGRES_PASSWORD: postgrespassword
     volumes:
-      - db_data:/var/lib/postgresql/data
+      - db-data:/var/lib/postgresql/data
 
   graphql-engine:
     image: hasura/graphql-engine:latest.cli-migrations
@@ -58,6 +59,7 @@ services:
     command: bash -c "chmod +x entrypoint.sh && ./entrypoint.sh"
     ports:
       - "3030:3000"
+    stdin_open: true
 
 volumes:
-  db_data:
+  db-data:
